@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Sync P4 on Common OPI</title>
+</head>
+<body>
+    <H1>Click this button to sync OPI perforce</H1>
+    <button id="sync" style="height: 100px;width:500px;font-size: 50px;">SYNC ME!!</button>
+
+</body>
+
+<script>
+    // Only run what comes next *after* the page has loaded
+    var button = document.querySelector("#sync");
+    button.addEventListener("click", function(e) {
+        // When a click happens, stop the button
+        // from submitting our form (if we have one)
+        e.preventDefault();
+
+        var request = new XMLHttpRequest();
+        request.onload = function() {
+            // We could do more interesting things with the response
+            // or, we could ignore it entirely
+            alert(request.responseText);
+        };
+        request.open("GET", "/sync", true);
+        request.send();
+    });
+</script>
+
+</html>
